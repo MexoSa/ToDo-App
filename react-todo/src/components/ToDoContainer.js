@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import TaskForm from './TaskForm';
 import TaskBody from './TaskBody';
+import TaskFilter from './TaskFilter';
 
 export default function ToDoContainer() {
    const [newTaskValue, setNewTaskValue] = useState('');
@@ -84,15 +85,7 @@ export default function ToDoContainer() {
       <div className='ToDoContainer' >
          <TaskForm newTaskValue={newTaskValue} setNewTaskValue={setNewTaskValue} createTask={createTask} />
          <TaskBody tasks={filterTasks} checkedTask={checkedTask} deleteTask={deleteTask} changeTaskValue={changeTaskValue} />
-         <div className='TaskFilter'>
-            {
-               filterButtons.map(button => {
-                  return (
-                     <button key={button} className={`filter ${button === flag ? 'active' : ''}`} onClick={() => filterTask(button)}>{button}</button>
-                  )
-               })
-            }
-         </div>
+         <TaskFilter flag={flag} filterTask={filterTask} filterButtons={filterButtons} />
       </div>
    );
 }
