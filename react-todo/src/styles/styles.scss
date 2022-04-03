@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+body {
+   font-family: "Roboto", sans-serif;
+   font-size: 18px;
+}
+.App {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+   .ToDoContainer {
+      width: 700px;
+      height: 500px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 15px 0px rgba(122, 122, 122, 0.459);
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 25px;
+      form {
+         display: flex;
+         gap: 15px;
+         justify-content: space-between;
+         input {
+            border: none;
+            outline: none;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: inherit;
+            line-height: 25px;
+            width: 100%;
+            box-shadow: 0px 0px 3px 0px rgb(90, 90, 90);
+            &:focus {
+               box-shadow: 0px 0px 10px 0px rgb(255, 226, 165);
+            }
+         }
+         button {
+            background-color: rgb(253, 244, 229);
+            box-shadow: 2px 2px 5px 0px rgb(139, 139, 139);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: inherit;
+            white-space: nowrap;
+         }
+      }
+      .TaskBody {
+         overflow: auto;
+         flex-basis: 100%;
+         min-height: 200px;
+         &::-webkit-scrollbar {
+            display: none;
+         }
+         .task {
+            width: 100%;
+            display: flex;
+            gap: 5px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            line-height: 24px;
+            transition: opacity 0.3s;
+            span {
+               padding-top: 13px;
+            }
+            p {
+               flex-basis: 100%;
+               background-color: rgb(253, 244, 229);
+               padding: 10px 15px;
+               outline: none;
+               border: 2px solid transparent;
+               border-radius: inherit;
+               word-break: break-all;
+               transition: background-color 0.7s, color 0.7s;
+               &[contenteditable="true"] {
+                  border: 2px solid rgba(184, 98, 0);
+                  display: inline;
+               }
+            }
+            &.checked p {
+               color: white;
+               background-color: rgb(67, 206, 54);
+            }
+            button {
+               background-color: transparent;
+               border: none;
+               border-radius: inherit;
+               outline: none;
+               padding: 10px;
+               font: inherit;
+               cursor: pointer;
+            }
+            &.deleted {
+               opacity: 0;
+            }
+         }
+      }
+      .TaskFilter {
+         height: auto;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 15px;
+         button {
+            background-color: rgb(253, 244, 229);
+            border-radius: 20px;
+            cursor: pointer;
+            padding: 10px 25px;
+            font: inherit;
+            transition: background-color 0.3s, color 0.3s;
+            flex-grow: 1;
+            text-align: center;
+            border: none;
+            &.active {
+               color: white;
+               background-color: rgba(184, 98, 0);
+            }
+         }
+      }
+   }
+}
+
+.btn-active:active {
+   box-shadow: inset -1px 0px 5px 0px rgb(37, 37, 37) !important;
+}
